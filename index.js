@@ -1,0 +1,1 @@
+const input = prompt("Enter an input");
