@@ -6,16 +6,8 @@ const computerPlay = () => {
 };
 
 const playRound = (playerSelection, computerSelection) => {
-  if (
-    playerSelection === "" ||
-    playerSelection === null ||
-    playerSelection === undefined
-  ) {
-    return "Please choose Rock, Paper, or Scissors";
-  } else {
-    playerSelection = playerSelection.toLowerCase();
-  }
-
+  // playerSelection = playerSelection.toLowerCase();
+  // computerSelection = computerSelection.toLowerCase();
   switch (playerSelection) {
     case "rock":
       if (computerSelection === "rock") {
@@ -51,7 +43,7 @@ const playRound = (playerSelection, computerSelection) => {
       }
       break;
     default:
-      return "Invalid selection! Please choose Rock, Paper, or Scissors.";
+      return "Please enter a valid option";
   }
 };
 
@@ -59,7 +51,7 @@ const game = () => {
   let playerScore = 0;
   let computerScore = 0;
   for (let i = 0; i < 5; i++) {
-    const playerSelection = prompt("Choose Rock, Paper, or Scissors:");
+    const playerSelection = prompt("Enter your choice: ");
     const computerSelection = computerPlay();
     const result = playRound(playerSelection, computerSelection);
     console.log(result);
@@ -70,10 +62,12 @@ const game = () => {
     }
   }
   if (playerScore > computerScore) {
-    return `You win ${playerScore} to ${computerScore}`;
+    console.log("You win!");
+  } else if (playerScore < computerScore) {
+    console.log("You lose!");
   } else {
-    return `You lose ${computerScore} to ${playerScore}`;
+    console.log("It's a tie!");
   }
-};
+}
 
 game();

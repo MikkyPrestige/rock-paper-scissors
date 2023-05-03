@@ -6,15 +6,15 @@ const computerPlay = () => {
 };
 
 const playRound = (playerSelection, computerSelection) => {
-  if (
-    playerSelection === "" ||
-    playerSelection === null ||
-    playerSelection === undefined
-  ) {
-    return "Please choose Rock, Paper, or Scissors";
-  } else {
-    playerSelection = playerSelection.toLowerCase();
-  }
+  // if (
+  //   playerSelection === "" ||
+  //   playerSelection === null ||
+  //   playerSelection === undefined
+  // ) {
+  //   return "Please choose Rock, Paper, or Scissors";
+  // } else {
+  //   playerSelection = playerSelection.toLowerCase();
+  // }
 
   switch (playerSelection) {
     case "rock":
@@ -58,6 +58,17 @@ const playRound = (playerSelection, computerSelection) => {
 const game = () => {
   let playerScore = 0;
   let computerScore = 0;
+  let isValidInput = false;
+  let playerSelection;
+  while (!isValidInput) {
+    playerSelection = prompt("Choose Rock, Paper, or Scissors:");
+    if (playerSelection === null) {
+      return "Game canceled by user";
+    } else if (["rock", "paper", "scissors"].includes(playerSelection.toLowerCase())) {
+      isValidInput = true;
+      playerSelection = playerSelection.toLowerCase();
+    }
+  }
   for (let i = 0; i < 5; i++) {
     const playerSelection = prompt("Choose Rock, Paper, or Scissors:");
     const computerSelection = computerPlay();
@@ -70,7 +81,7 @@ const game = () => {
     }
   }
   if (playerScore > computerScore) {
-    return `You win ${playerScore} to ${computerScore}`;
+    return `You win ${playerScore} to ${computerScore}`
   } else {
     return `You lose ${computerScore} to ${playerScore}`;
   }

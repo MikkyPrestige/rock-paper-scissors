@@ -58,6 +58,7 @@ const playRound = (playerSelection, computerSelection) => {
 const game = () => {
   let playerScore = 0;
   let computerScore = 0;
+  let isValidInput = false;
   for (let i = 0; i < 5; i++) {
     const playerSelection = prompt("Choose Rock, Paper, or Scissors:");
     const computerSelection = computerPlay();
@@ -70,7 +71,7 @@ const game = () => {
     }
   }
   if (playerScore > computerScore) {
-    return `You win ${playerScore} to ${computerScore}`;
+    return `You win ${playerScore} to ${computerScore}`
   } else {
     return `You lose ${computerScore} to ${playerScore}`;
   }

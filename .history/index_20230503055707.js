@@ -6,12 +6,10 @@ const computerPlay = () => {
 };
 
 const playRound = (playerSelection, computerSelection) => {
-  if (
-    playerSelection === "" ||
-    playerSelection === null ||
-    playerSelection === undefined
-  ) {
-    return "Please choose Rock, Paper, or Scissors";
+  if (playerSelection === ""
+    || playerSelection === null
+    || playerSelection === undefined) {
+    return "Please enter a valid input.";
   } else {
     playerSelection = playerSelection.toLowerCase();
   }
@@ -59,21 +57,49 @@ const game = () => {
   let playerScore = 0;
   let computerScore = 0;
   for (let i = 0; i < 5; i++) {
-    const playerSelection = prompt("Choose Rock, Paper, or Scissors:");
+    const playerSelection = prompt('Choose Rock, Paper, or Scissors:');
     const computerSelection = computerPlay();
     const result = playRound(playerSelection, computerSelection);
     console.log(result);
     if (result.includes("win")) {
       playerScore++;
-    } else if (result.includes("lose")) {
+    }
+    else if (result.includes("lose")) {
       computerScore++;
     }
   }
   if (playerScore > computerScore) {
-    return `You win ${playerScore} to ${computerScore}`;
-  } else {
-    return `You lose ${computerScore} to ${playerScore}`;
+    console.log("You win!");
   }
-};
+  else {
+    console.log("You lose!");
+  }
+}
 
 game();
+
+
+// const game = () => {
+//   let playerScore = 0;
+//   let computerScore = 0;
+//   for (let i = 0; i < 5; i++) {
+//     const playerSelection = prompt("Enter your choice: ");
+//     const computerSelection = computerPlay();
+//     const result = playRound(playerSelection, computerSelection);
+//     console.log(result);
+//     if (result.includes("win")) {
+//       playerScore++;
+//     } else if (result.includes("lose")) {
+//       computerScore++;
+//     }
+//   }
+//   if (playerScore > computerScore) {
+//     console.log("You win!");
+//   } else if (playerScore < computerScore) {
+//     console.log("You lose!");
+//   } else {
+//     console.log("It's a tie!");
+//   }
+// }
+
+// game();

@@ -70,9 +70,9 @@ const game = () => {
     }
   }
   if (playerScore > computerScore) {
-    return `You win ${playerScore} to ${computerScore}`;
+    return `You win ${playerScore} to ${computerScore}`
   } else {
-    return `You lose ${computerScore} to ${playerScore}`;
+    console.log("You lose!");
   }
 };
 
