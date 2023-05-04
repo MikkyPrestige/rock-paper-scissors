@@ -5,9 +5,9 @@
 // scissors| lose | win   | tie
 
 const computerPlay = () => {
-  const words = ["Rock", "Paper", "Scissors"];
-  const random = Math.floor(Math.random() * words.length);
-  return words[random];
+  const options = ["Rock", "Paper", "Scissors"];
+  const random = Math.floor(Math.random() * options.length);
+  return options[random];
 };
 
 const playRound = (playerSelection, computerSelection) => {
@@ -44,13 +44,53 @@ const playRound = (playerSelection, computerSelection) => {
   }
 
   if (playerValue === computerValue) {
-    return `It's a tie! You both chose ${playerSelection}.`;
+    return "It's a tie";
   } else if ((playerValue - computerValue + 3) % 3 === 1) {
     return `You win! ${playerSelection} beats ${computerSelection}`;
   } else {
     return `You lose! ${computerSelection} beats ${playerSelection}`;
   }
 };
+
+// const playRound = (playerSelection, computerSelection) => {
+//   const player = playerSelection.toLowerCase();
+//   const computer = computerSelection.toLowerCase();
+
+//   switch (player) {
+//     case "rock":
+//       switch (computer) {
+//         case "rock":
+//           return "It's a tie";
+//         case "paper":
+//           return "You lose! Paper beats Rock";
+//         case "scissors":
+//           return "You win! Rock beats Scissors";
+//       }
+//       break;
+//     case "paper":
+//       switch (computer) {
+//         case "rock":
+//           return "You win! Paper beats Rock";
+//         case "paper":
+//           return "It's a tie";
+//         case "scissors":
+//           return "You lose! Scissors beats Paper";
+//       }
+//       break;
+//     case "scissors":
+//       switch (computer) {
+//         case "rock":
+//           return "You lose! Rock beats Scissors";
+//         case "paper":
+//           return "You win! Scissors beats Paper";
+//         case "scissors":
+//           return "It's a tie";
+//       }
+//       break;
+//     default:
+//       return;
+//   }
+// };
 
 const game = () => {
   let playerScore = 0;

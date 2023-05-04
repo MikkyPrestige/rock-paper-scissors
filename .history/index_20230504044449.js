@@ -5,9 +5,9 @@
 // scissors| lose | win   | tie
 
 const computerPlay = () => {
-  const words = ["Rock", "Paper", "Scissors"];
-  const random = Math.floor(Math.random() * words.length);
-  return words[random];
+  const options = ["Rock", "Paper", "Scissors"];
+  const random = Math.floor(Math.random() * options.length);
+  return options[random];
 };
 
 const playRound = (playerSelection, computerSelection) => {

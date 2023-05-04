@@ -11,11 +11,11 @@ const computerPlay = () => {
 };
 
 const playRound = (playerSelection, computerSelection) => {
-  const player = playerSelection.toLowerCase();
-  const computer = computerSelection.toLowerCase();
+  // const player = playerSelection.toLowerCase();
+  // const computer = computerSelection.toLowerCase();
   let playerValue, computerValue;
 
-  switch (player) {
+  switch (playerSelection) {
     case "paper":
       playerValue = 0;
       break;
@@ -29,7 +29,7 @@ const playRound = (playerSelection, computerSelection) => {
       return;
   }
 
-  switch (computer) {
+  switch (computerSelection) {
     case "paper":
       computerValue = 0;
       break;

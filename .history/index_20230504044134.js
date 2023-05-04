@@ -5,43 +5,59 @@
 // scissors| lose | win   | tie
 
 const computerPlay = () => {
-  const words = ["Rock", "Paper", "Scissors"];
-  const random = Math.floor(Math.random() * words.length);
-  return words[random];
+  const options = ["Rock", "Paper", "Scissors"];
+  const random = Math.floor(Math.random() * options.length);
+  return options[random];
 };
 
 const playRound = (playerSelection, computerSelection) => {
-  const player = playerSelection.toLowerCase();
-  const computer = computerSelection.toLowerCase();
-  let playerValue, computerValue;
+  let playerValue =
+    playerSelection === "rock"
+      ? 1
+      : playerSelection === "paper"
+      ? 0
+      : playerSelection === "scissors"
+      ? 2
+      : null;
+  let computerValue =
+    computerSelection === "rock"
+      ? 1
+      : computerSelection === "paper"
+      ? 0
+      : computerSelection === "scissors"
+      ? 2
+      : null;
+  // const player = playerSelection.toLowerCase();
+  // const computer = computerSelection.toLowerCase();
+  // let playerValue, computerValue;
 
-  switch (player) {
-    case "paper":
-      playerValue = 0;
-      break;
-    case "rock":
-      playerValue = 1;
-      break;
-    case "scissors":
-      playerValue = 2;
-      break;
-    default:
-      return;
-  }
+  // switch (player) {
+  //   case "paper":
+  //     playerValue = 0;
+  //     break;
+  //   case "rock":
+  //     playerValue = 1;
+  //     break;
+  //   case "scissors":
+  //     playerValue = 2;
+  //     break;
+  //   default:
+  //     return;
+  // }
 
-  switch (computer) {
-    case "paper":
-      computerValue = 0;
-      break;
-    case "rock":
-      computerValue = 1;
-      break;
-    case "scissors":
-      computerValue = 2;
-      break;
-    default:
-      return;
-  }
+  // switch (computer) {
+  //   case "paper":
+  //     computerValue = 0;
+  //     break;
+  //   case "rock":
+  //     computerValue = 1;
+  //     break;
+  //   case "scissors":
+  //     computerValue = 2;
+  //     break;
+  //   default:
+  //     return;
+  // }
 
   if (playerValue === computerValue) {
     return `It's a tie! You both chose ${playerSelection}.`;
