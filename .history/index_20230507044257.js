@@ -1,11 +1,9 @@
-// Function to generate computer play
 const computerPlay = () => {
   const words = ["rock", "paper", "scissors"];
   const random = Math.floor(Math.random() * words.length);
   return words[random];
 };
 
-// Function to get play from user
 const playerInput = () => {
   const input = prompt("Enter 'rock', 'paper', or 'scissors' to play");
   if (input === null) {
@@ -14,22 +12,21 @@ const playerInput = () => {
   return input.trim().toLowerCase();
 };
 
-// Function to Quit game
 const quitGame = () => {
-  const quit = prompt("Are you sure you want to quit the game? (y/n)");
+  const quit = prompt("Are you sure you want to quit? (y/n)");
   if (quit === "y") {
     alert("Thanks for playing!");
-    return true;
+    return;
   } else if (quit === "n") {
     alert("Great! Let's keep playing!");
-    return false;
+    game();
   } else {
     alert("Please enter 'y' or 'n'");
-    return quitGame();
+    quitGame();
   }
+  return;
 };
 
-// Function to validate player selection
 const playerSelection = () => {
   const inputFromPlayer = playerInput();
   if (inputFromPlayer === "") {
@@ -39,10 +36,10 @@ const playerSelection = () => {
     if (continueGame) {
       return playerSelection();
     } else {
-      return null;
+      quitGame();
     }
   } else if (!inputFromPlayer) {
-    return null;
+    quitGame();
   } else if (
     inputFromPlayer === "rock" ||
     inputFromPlayer === "paper" ||
@@ -55,7 +52,6 @@ const playerSelection = () => {
   }
 };
 
-// Function to play a round
 const playRound = (playerSelection, computerSelection) => {
   let playerValue, computerValue;
 
@@ -88,10 +84,13 @@ const playRound = (playerSelection, computerSelection) => {
   }
 
   if (playerValue === computerValue) {
+    console.log(`It's a tie! You both chose ${playerSelection}.`);
     return `It's a tie! You both chose ${playerSelection}.`;
   } else if ((playerValue - computerValue + 3) % 3 === 1) {
+    console.log(`You win! ${playerSelection} beats ${computerSelection}`);
     return `You win! ${playerSelection} beats ${computerSelection}`;
   } else {
+    console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
     return `You lose! ${computerSelection} beats ${playerSelection}`;
   }
 };
@@ -100,7 +99,6 @@ let playerScore = 0;
 let computerScore = 0;
 let tie = 0;
 
-// Function to determine winner
 const winner = () => {
   return playerScore > computerScore
     ? "You win!"
@@ -109,51 +107,26 @@ const winner = () => {
     : "It's a tie!";
 };
 
-// Function to play again
-const playAgain = () => {
-  const play = prompt("Do you want to play again? (y/n)");
-  if (play === "y") {
-    playerScore = 0;
-    computerScore = 0;
-    tie = 0;
-    game();
-  } else if (play === "n") {
-    alert("Thanks for playing!");
-  } else {
-    alert("Please enter 'y' or 'n'");
-    playAgain();
-  }
-};
-
-// Function to play the game
 const game = () => {
   for (let i = 0; i < 5; i++) {
-    const playerInputValue = playerSelection();
-    if (playerInputValue === null) {
-      if (quitGame()) {
-        return;
-      } else {
-        i--;
-      }
+    const result = playRound(playerSelection(), computerPlay());
+    if (!result) {
+      return;
+    } else if (result.includes("win")) {
+      playerScore++;
+    } else if (result.includes("lose")) {
+      computerScore++;
     } else {
-      console.log(`Round ${i + 1}`);
-      const result = playRound(playerInputValue, computerPlay());
-      if (result.includes("win")) {
-        playerScore++;
-      } else if (result.includes("lose")) {
-        computerScore++;
-      } else {
-        tie++;
-      }
-      console.log(result);
+      tie++;
     }
   }
 
   console.log(
-    `Final score: Player: ${playerScore} | Computer: ${computerScore} | Tie: ${tie}`
+    `Player: ${playerScore} | Computer: ${computerScore} | Tie: ${tie}`
   );
-  alert(winner());
-  playAgain();
+  console.log(winner());
+
+  return;
 };
 
 game();

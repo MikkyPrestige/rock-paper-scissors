@@ -123,7 +123,7 @@ const playAgain = () => {
     alert("Please enter 'y' or 'n'");
     playAgain();
   }
-};
+}
 
 // Function to play the game
 const game = () => {
@@ -157,3 +157,5 @@ const game = () => {
 };
 
 game();
+
+

@@ -109,22 +109,6 @@ const winner = () => {
     : "It's a tie!";
 };
 
-// Function to play again
-const playAgain = () => {
-  const play = prompt("Do you want to play again? (y/n)");
-  if (play === "y") {
-    playerScore = 0;
-    computerScore = 0;
-    tie = 0;
-    game();
-  } else if (play === "n") {
-    alert("Thanks for playing!");
-  } else {
-    alert("Please enter 'y' or 'n'");
-    playAgain();
-  }
-};
-
 // Function to play the game
 const game = () => {
   for (let i = 0; i < 5; i++) {
@@ -157,3 +141,20 @@ const game = () => {
 };
 
 game();
+
+// Function to play again
+const playAgain = () => {
+  const play = prompt("Do you want to play again? (y/n)");
+  if (play === "y") {
+    playerScore = 0;
+    computerScore = 0;
+    tie = 0;
+    game();
+  } else if (play === "n") {
+    alert("Thanks for playing!");
+  } else {
+    alert("Please enter 'y' or 'n'");
+    playAgain();
+  }
+}
+

@@ -96,6 +96,7 @@ const playRound = (playerSelection, computerSelection) => {
   }
 };
 
+
 let playerScore = 0;
 let computerScore = 0;
 let tie = 0;
@@ -107,22 +108,6 @@ const winner = () => {
     : playerScore < computerScore
     ? "You lose!"
     : "It's a tie!";
-};
-
-// Function to play again
-const playAgain = () => {
-  const play = prompt("Do you want to play again? (y/n)");
-  if (play === "y") {
-    playerScore = 0;
-    computerScore = 0;
-    tie = 0;
-    game();
-  } else if (play === "n") {
-    alert("Thanks for playing!");
-  } else {
-    alert("Please enter 'y' or 'n'");
-    playAgain();
-  }
 };
 
 // Function to play the game
@@ -153,7 +138,6 @@ const game = () => {
     `Final score: Player: ${playerScore} | Computer: ${computerScore} | Tie: ${tie}`
   );
   alert(winner());
-  playAgain();
 };
 
 game();
