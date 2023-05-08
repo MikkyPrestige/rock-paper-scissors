@@ -1,0 +1,23 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Fira Sans", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  /* background: rgba(29, 50, 83, 1); */
+  background: -moz-linear-gradient(
+    left,
+    rgba(29, 50, 83, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+}

@@ -1,0 +1,90 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Fira Sans", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  background: rgba(29, 50, 83, 1);
+  width: 100%;
+  height: 100%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  height: 100%;
+  width: 100%;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  width: 100%;
+  height: auto;
+}
+
+figure {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: auto;
+}
+
+.logo {
+  width: 5rem;
+  height: 3rem;
+}
+
+figcaption {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 1);
+  background: #E2CECE;
+  border: 3px solid #741D1D;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  filter: blur(.5rem);
+  -webkit-filter: blur(.5rem);
+}
+
+nav {
+  height: auto;
+  margin-right: 10rem;
+}
+
+ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  list-style: none;
+}
+
+li a {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 1);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #1D3253;
+  text-decoration: none;
+  padding: 1rem;
+  border-radius: 2rem;
+}
+
+li a:hover {
+  background: rgba(255, 255, 255, 1);
+  color: rgba(29, 50, 83, 1);
+  text-decoration: underline;
+}
