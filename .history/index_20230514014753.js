@@ -116,10 +116,10 @@ const playAgain = () => {
     playerScore = 0;
     computerScore = 0;
     tie = 0;
+    console.clear();
     game();
   } else if (play === "n") {
     alert("Thanks for playing!");
-    return;
   } else {
     alert("Please enter 'y' or 'n'");
     playAgain();

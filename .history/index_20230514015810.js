@@ -119,7 +119,7 @@ const playAgain = () => {
     game();
   } else if (play === "n") {
     alert("Thanks for playing!");
-    return;
+    return
   } else {
     alert("Please enter 'y' or 'n'");
     playAgain();
