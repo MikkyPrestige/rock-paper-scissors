@@ -1,15 +1,3 @@
-const roundStyle = [
-  "background-color: blue",
-  "color: #f1f1f1",
-  "padding: 5px",
-  "font-size: 18px",
-  "font-weight: bold",
-  "border-radius: 5px",
-].join(";");
-
-// Welcome player
-alert("Welcome to the rock-paper-scissors game! \n Click OK to start playing.");
-
 // Function to generate computer play
 const computerPlay = () => {
   const words = ["rock", "paper", "scissors"];
@@ -24,6 +12,21 @@ const playerInput = () => {
     return;
   }
   return input.trim().toLowerCase();
+};
+
+// Function to Quit game
+const quitGame = () => {
+  const quit = prompt("Are you sure you want to quit the game? (y/n)");
+  if (quit === "y") {
+    alert("Thanks for playing!");
+    return true;
+  } else if (quit === "n") {
+    alert("Great! Let's keep playing!");
+    return false;
+  } else {
+    alert("Please enter 'y' or 'n'");
+    return quitGame();
+  }
 };
 
 // Function to validate player selection
@@ -47,9 +50,7 @@ const playerSelection = () => {
   ) {
     return inputFromPlayer;
   } else {
-    alert(
-      `Invalid input: "${inputFromPlayer}". Please enter 'rock', 'paper', or 'scissors'.`
-    );
+    alert(`Invalid input: "${inputFromPlayer}". Please enter 'rock', 'paper', or 'scissors'.`);
     return playerSelection();
   }
 };
@@ -101,42 +102,27 @@ let tie = 0;
 
 // Function to determine winner
 const winner = () => {
-  let result, color;
-  if (playerScore > computerScore) {
-    result = "You win!";
-    color = "#28a745";
-  } else if (playerScore < computerScore) {
-    result = "You lose!";
-    color = " #dc3545";
-  } else {
-    result = "It's a tie!";
-    color = "#007bff";
-  }
-  console.log(
-    `%cFinal score: %c${result} \n %cPlayer: %c${playerScore} %c| Computer: %c${computerScore} %c| Tie: %c${tie}`,
-    "font-size: 14px; font-weight: bold; margin: 5px;",
-    `color: ${color}; font-size: 16px; font-weight: bold; margin: 5px;`,
-    "font-size: 18px; font-weight: bold;",
-    "color: #007bff; font-size: 18px; font-weight: bold;",
-    "font-size: 18px; font-weight: bold;",
-    "color: #dc3545; font-size: 18px; font-weight: bold;",
-    "font-size: 18px; font-weight: bold;",
-    "color: #28a745; font-size: 18px; font-weight: bold;"
-  );
+  return playerScore > computerScore
+    ? "You win!"
+    : playerScore < computerScore
+    ? "You lose!"
+    : "It's a tie!";
 };
 
-// Function to Quit game
-const quitGame = () => {
-  const quit = prompt("Are you sure you want to quit the game? (y/n)");
-  if (quit === "y") {
+// Function to play again
+const playAgain = () => {
+  const play = prompt("Do you want to play again? (y/n)");
+  if (play === "y") {
+    playerScore = 0;
+    computerScore = 0;
+    tie = 0;
+    game();
+  } else if (play === "n") {
     alert("Thanks for playing!");
-    return true;
-  } else if (quit === "n") {
-    alert("Great! Let's keep playing!");
-    return false;
+    return;
   } else {
     alert("Please enter 'y' or 'n'");
-    return quitGame();
+    playAgain();
   }
 };
 
@@ -153,7 +139,7 @@ const game = () => {
     } else {
       console.log(`%cRound ${i + 1}`, roundStyle);
       const result = playRound(playerInputValue, computerPlay());
-      console.log("%c" + result, "font-size: 14px; font-weight: bold");
+      console.log(result);
       if (result.includes("win")) {
         playerScore++;
       } else if (result.includes("lose")) {
@@ -164,7 +150,56 @@ const game = () => {
     }
   }
 
-  winner();
+  console.log(
+    `Final score: Player: ${playerScore} | Computer: ${computerScore} | Tie: ${tie}`
+  );
+  alert(winner());
+  playAgain();
 };
 
 game();
+
+
+const style = [
+  "padding: 5px 10px",
+  "font-size: 20px",
+  "font-weight: bold",
+  "border-radius: 5px",
+  "margin: 5px 0",
+].join(";");
+
+const roundStyle = [
+  "background-color: blue",
+  "color: #f1f1f1",
+].join(";");
+
+const resultStyle = [
+  "background-color: green",
+  "color: #f1f1f1",
+  "padding: 10px",
+  "text-align: center",
+  "font-size: 20px",
+  "font-weight: bold",
+  "border-radius: 5px",
+  "margin: 10px 0",
+].join(";");
+const scoreStyle = [
+  "background-color: red",
+  "color: #f1f1f1",
+  "padding: 10px",
+  "text-align: center",
+  "font-size: 20px",
+  "font-weight: bold",
+  "border-radius: 5px",
+  "margin: 10px 0",
+].join(";");
+const winnerStyle = [
+  "background-color: yellow",
+  "color: #f1f1f1",
+  "padding: 10px",
+  "text-align: center",
+  "font-size: 20px",
+  "font-weight: bold",
+  "border-radius: 5px",
+  "margin: 10px 0",
+].join(";");

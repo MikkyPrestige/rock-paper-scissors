@@ -7,9 +7,7 @@ const roundStyle = [
   "border-radius: 5px",
 ].join(";");
 
-// Welcome player
-alert("Welcome to the rock-paper-scissors game! \n Click OK to start playing.");
-
+const finalScore = [];
 // Function to generate computer play
 const computerPlay = () => {
   const words = ["rock", "paper", "scissors"];
@@ -24,6 +22,21 @@ const playerInput = () => {
     return;
   }
   return input.trim().toLowerCase();
+};
+
+// Function to Quit game
+const quitGame = () => {
+  const quit = prompt("Are you sure you want to quit the game? (y/n)");
+  if (quit === "y") {
+    alert("Thanks for playing!");
+    return true;
+  } else if (quit === "n") {
+    alert("Great! Let's keep playing!");
+    return false;
+  } else {
+    alert("Please enter 'y' or 'n'");
+    return quitGame();
+  }
 };
 
 // Function to validate player selection
@@ -104,39 +117,41 @@ const winner = () => {
   let result, color;
   if (playerScore > computerScore) {
     result = "You win!";
-    color = "#28a745";
+    color = "green";
   } else if (playerScore < computerScore) {
     result = "You lose!";
-    color = " #dc3545";
+    color = "red";
   } else {
     result = "It's a tie!";
-    color = "#007bff";
+    color = "blue";
   }
   console.log(
-    `%cFinal score: %c${result} \n %cPlayer: %c${playerScore} %c| Computer: %c${computerScore} %c| Tie: %c${tie}`,
-    "font-size: 14px; font-weight: bold; margin: 5px;",
-    `color: ${color}; font-size: 16px; font-weight: bold; margin: 5px;`,
-    "font-size: 18px; font-weight: bold;",
+    `%cFinal score: %c${result} %cPlayer: %c${playerScore} %c| Computer: %c${computerScore} %c| Tie: %c${tie}`,
+    "font-size: 14px; font-weight: bold;",
+    `color: ${color}; font-size: 18px; font-weight: bold;`,
+    "font-size: 14px; font-weight: bold;",
     "color: #007bff; font-size: 18px; font-weight: bold;",
-    "font-size: 18px; font-weight: bold;",
+    "font-size: 14px; font-weight: bold;",
     "color: #dc3545; font-size: 18px; font-weight: bold;",
-    "font-size: 18px; font-weight: bold;",
+    "font-size: 14px; font-weight: bold;",
     "color: #28a745; font-size: 18px; font-weight: bold;"
   );
 };
 
-// Function to Quit game
-const quitGame = () => {
-  const quit = prompt("Are you sure you want to quit the game? (y/n)");
-  if (quit === "y") {
+// Function to play again
+const playAgain = () => {
+  const play = prompt("Do you want to play again? (y/n)");
+  if (play === "y") {
+    playerScore = 0;
+    computerScore = 0;
+    tie = 0;
+    game();
+  } else if (play === "n") {
     alert("Thanks for playing!");
-    return true;
-  } else if (quit === "n") {
-    alert("Great! Let's keep playing!");
-    return false;
+    return;
   } else {
     alert("Please enter 'y' or 'n'");
-    return quitGame();
+    playAgain();
   }
 };
 
@@ -164,7 +179,21 @@ const game = () => {
     }
   }
 
-  winner();
+  // const [resultText, resultColor] = winner();
+  // console.log(result, color);
+
+  // console.log(
+  //   `%cFinal score: ${resultText, resultColor} \n %cPlayer: %c${playerScore}%c | Computer: %c${computerScore}%c | Tie: %c${tie}%c`,
+  //   "font-size: 14px; font-weight: bold; margin: 5px;",
+  //   "color: #000; background-color: #fff; padding: 5px; font-size: 18px; font-weight: bold;",
+  //   "color: #fff; background-color: #007bff; padding: 5px; font-size: 18px; font-weight: bold;",
+  //   "color: #000; background-color: #fff; padding: 5px; font-size: 18px; font-weight: bold;",
+  //   "color: #fff; background-color: #dc3545; padding: 5px; font-size: 18px; font-weight: bold;",
+  //   "color: #000; background-color: #fff; padding: 5px; font-size: 18px; font-weight: bold;",
+  //   "color: #fff; background-color: #28a745; padding: 5px; font-size: 18px; font-weight: bold;",
+  //   "color: #000; background-color: #fff; padding: 5px; font-size: 18px; font-weight: bold;"
+  // );
+  // playAgain();
 };
 
 game();

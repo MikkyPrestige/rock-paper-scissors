@@ -8,7 +8,7 @@ const roundStyle = [
 ].join(";");
 
 // Welcome player
-alert("Welcome to the rock-paper-scissors game! \n Click OK to start playing.");
+alert("Welcome to the rock-paper-scissors game! \n Please click OK to start playing.");
 
 // Function to generate computer play
 const computerPlay = () => {
@@ -24,6 +24,21 @@ const playerInput = () => {
     return;
   }
   return input.trim().toLowerCase();
+};
+
+// Function to Quit game
+const quitGame = () => {
+  const quit = prompt("Are you sure you want to quit the game? (y/n)");
+  if (quit === "y") {
+    alert("Thanks for playing!");
+    return true;
+  } else if (quit === "n") {
+    alert("Great! Let's keep playing!");
+    return false;
+  } else {
+    alert("Please enter 'y' or 'n'");
+    return quitGame();
+  }
 };
 
 // Function to validate player selection
@@ -123,21 +138,6 @@ const winner = () => {
     "font-size: 18px; font-weight: bold;",
     "color: #28a745; font-size: 18px; font-weight: bold;"
   );
-};
-
-// Function to Quit game
-const quitGame = () => {
-  const quit = prompt("Are you sure you want to quit the game? (y/n)");
-  if (quit === "y") {
-    alert("Thanks for playing!");
-    return true;
-  } else if (quit === "n") {
-    alert("Great! Let's keep playing!");
-    return false;
-  } else {
-    alert("Please enter 'y' or 'n'");
-    return quitGame();
-  }
 };
 
 // Function to play the game
